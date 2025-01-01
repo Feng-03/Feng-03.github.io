@@ -28,3 +28,7 @@ function notVertical() {
     stuff.classList.remove("change");
   }
 }
+
+function popUp() {
+  alert("Stay tune, account yet to come!");
+}
