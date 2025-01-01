@@ -32,3 +32,6 @@ function notVertical() {
 function popUp() {
   alert("Stay tune, account yet to come!");
 }
+function blogTime(){
+  alert("Isn't that time of the year yet");
+}
