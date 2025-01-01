@@ -1,6 +1,6 @@
 body {
   background: url(photo/purple-light.png) center/cover;
-  color: white; 
+  color: white; -webkit-text-stroke: 0.3px black; 
 }
 
 .logo {
