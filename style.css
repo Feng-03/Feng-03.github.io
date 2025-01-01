@@ -91,6 +91,13 @@ body {
   .navbar.vertical .logo {
     display: none;
   }
+
+  #my-face {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 300px;
+  }
 }
 
 .container{
@@ -110,9 +117,11 @@ body {
   font-family: Comic Sans MS, Comic Sans, cursive;
 }
 
+@media only screen and (min-width: 1075px) {
 .front-text p {
   float: left;
   padding: 40px;
+}
 }
 
 table.table, table.table tr, table.table tr td {
@@ -125,7 +134,9 @@ table.table a{
 }
 
 #my-face {
-  float: right;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   height: 300px;
 }
 
