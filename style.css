@@ -178,3 +178,8 @@ td, th {
   height: 40px;
   padding: 0px 3px 0px;
 }
+
+.comment a{
+  color: white;
+  font-weight: 900;
+}
