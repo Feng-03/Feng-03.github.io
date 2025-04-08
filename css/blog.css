@@ -1,0 +1,25 @@
+table.table, table.table tr, table.table tr td {
+    border: 1px solid white;
+}
+  
+table.table a{
+    color: white;
+  
+}
+
+.comment a{
+    color: white;
+    font-weight: 900;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #000;
+    text-align: left;
+    padding: 8px;
+  }

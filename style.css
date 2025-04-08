@@ -1,5 +1,5 @@
 body {
-  background: url(photo/purple-light.png) center/cover;
+  background: url(/photo/purple-light.png) center/cover;
   color: white; -webkit-text-stroke: 0.3px black; 
 }
 
@@ -124,15 +124,6 @@ body {
 }
 }
 
-table.table, table.table tr, table.table tr td {
-  border: 1px solid white;
-}
-
-table.table a{
-  color: white;
-
-}
-
 #my-face {
   display: block;
   margin-left: auto;
@@ -162,24 +153,7 @@ table.table a{
   color: black;
 }
 
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-td, th {
-  border: 1px solid #000;
-  text-align: left;
-  padding: 8px;
-}
-
 .button {
   height: 40px;
   padding: 0px 3px 0px;
-}
-
-.comment a{
-  color: white;
-  font-weight: 900;
 }
