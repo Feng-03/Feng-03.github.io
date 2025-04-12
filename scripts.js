@@ -1,7 +1,7 @@
 function barsClicked(x) {
   x.classList.toggle("change");
   document.getElementById("darken").classList.toggle("vertical");
-  document.querySelector(".lists").classList.toggle("vertical");
+  document.querySelector(".navbar").classList.toggle("vertical");
   for (let element of document.querySelectorAll("nav a")) {
     element.classList.toggle("vertical");
   }
@@ -14,7 +14,7 @@ window.addEventListener("resize", () => {
 })
 
 document.addEventListener("click", event => {
-  if (!document.querySelector(".lists").contains(event.target)) {
+  if (!document.querySelector(".navbar").contains(event.target)) {
     notVertical();
   }
 });
