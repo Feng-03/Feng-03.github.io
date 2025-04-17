@@ -31,24 +31,75 @@
         </nav>
     </header>
     <h1 class="title-page">The Blog</h1>
-    <table class="table">
-        <tr>
-            <td>Year</td>
-            <td>Link</td>
-        </tr>
-        <tr>
-            <td>2025</td>
-            <td><a target='_new' href="https://docs.google.com/document/d/1fJO27aQ4TdjXMTzlyljlaBAPSSMmwl0tTOa6tkunPms/edit?tab=t.0">Months blogs</a></td>
-        </tr>
-        <tr>
-            <td>2026</td>
-            <td><a onclick="blogTime()">Months blogs</a></td>
-        </tr>
-          <tr>
-            <td>2027</td>
-            <td><a onclick="blogTime()">Months blogs</a></td>
-        </tr>
-    </table>
+
+  <!-- Year Buttons -->
+  <div class="button-group active" id="year-buttons">
+    <strong>Select Year:</strong><br>
+    <button data-year="2025">2025</button>
+    <button data-year="2026">2026</button>
+    <button data-year="2027"> 2027</button>
+  </div>
+
+  <!-- Month Buttons (hidden until year selected) -->
+    <div class="button-group" id="month-buttons">
+        <strong>Select Month:</strong><br>
+        <button data-month="1">Jan</button>
+        <button data-month="2">Feb</button>
+        <button data-month="3">Mar</button>
+        <button data-month="4">Apr</button>
+        <button data-month="5">May</button>
+        <button data-month="6">Jun</button>
+        <button data-month="7">Jul</button>
+        <button data-month="8">Aug</button>
+        <button data-month="9">Sept</button>
+        <button data-month="10">Oct</button>
+        <button data-month="11">Nov</button>
+        <button data-month="12">Dec</button>
+  </div>
+
+  <!-- Day Buttons (hidden until month selected) -->
+<div class="button-group" id="day-buttons">
+    <strong>Select Day:</strong><br>
+    <button data-day="1">1</button>
+    <button data-day="2">2</button>
+    <button data-day="3">3</button>
+    <button data-day="4">4</button>
+    <button data-day="5">5</button>
+    <button data-day="6">6</button>
+    <button data-day="7">7</button>
+    <button data-day="8">8</button>
+    <button data-day="9">9</button>
+    <button data-day="10">10</button>
+    <button data-day="11">11</button>
+    <button data-day="12">12</button>
+    <button data-day="13">13</button>
+    <button data-day="14">14</button>
+    <button data-day="15">15</button>
+    <button data-day="16">16</button>
+    <button data-day="17">17</button>
+    <button data-day="18">18</button>
+    <button data-day="19">19</button>
+    <button data-day="20">20</button>
+    <button data-day="21">21</button>
+    <button data-day="22">22</button>
+    <button data-day="23">23</button>
+    <button data-day="24">24</button>
+    <button data-day="25">25</button>
+    <button data-day="26">26</button>
+    <button data-day="27">27</button>
+    <button data-day="28">28</button>
+    <button data-day="29">29</button>
+    <button data-day="30">30</button>
+    <button data-day="31">31</button>
+</div>
+
+<div id="overlay"></div>
+<div id="popup">
+  <span class="close-btn" onclick="closePopup()">X</span>
+  <h3 id="popup-date"></h3>
+  <p id="popup-content"></p>
+</div>
+
     <h1 class="comment"><a target='_new' href="https://docs.google.com/forms/d/e/1FAIpQLScK4KkjV_VLNaTXvPz9ogsRW0BAOh945JgSDBCMb8QwnkRvgA/viewform?usp=sharing"> CLICK HERE TO COMMENT</a></h1>
     <footer>
         <div class="bottom-list-icon">
@@ -62,6 +113,7 @@
             <img src="../photo/linkedin.png" class="button" alt="linkedin photo" onclick="popUp()">
         </div>
     </footer>
+    <script src="../blog.js"></script>
 </body>
 
 </html>
