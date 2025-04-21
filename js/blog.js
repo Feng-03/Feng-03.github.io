@@ -2,9 +2,10 @@ let selectedYear = null;
 let selectedMonth = null;
 let selectedDay = null;
 
-const blogData = {
-  "2025-1-1": "Test 1"
-};
+// const blogData = {
+//   "2025-1-1": "Test 1",
+//   "2025-2-1": "Test 2"
+// };
 
 const popupDate = document.getElementById("popup-date");
 const popupContent = document.getElementById("popup-content");
@@ -12,6 +13,10 @@ const popupContent = document.getElementById("popup-content");
 const yearButtons = document.getElementById("year-buttons");
 const monthButtons = document.getElementById("month-buttons");
 const dayButtons = document.getElementById("day-buttons");
+
+document.getElementById("new-post").addEventListener("click", () => {
+  newPopup();
+});
 
 // Handle years selection
 document.querySelectorAll('[data-year]').forEach(button => {
@@ -40,6 +45,20 @@ document.querySelectorAll('[data-day]').forEach(button => {
 function toggleButtons(currentGroup, nextGroup) {
   currentGroup.classList.remove("active");
   nextGroup.classList.add("active");
+}
+
+function newPopup() {
+  const values = Object.values(blogData);
+  const lastValue = values[values.length - 1];
+  
+  const entries = Object.entries(blogData); 
+  const lastEntry = entries[entries.length - 1];
+  const lastKey = lastEntry[0];
+
+  popupDate.textContent = lastKey;
+  popupContent.textContent = lastValue;
+  document.getElementById("popup").style.display = "block";
+  document.getElementById("overlay").style.display = "block";
 }
 
 function showPopup() {
