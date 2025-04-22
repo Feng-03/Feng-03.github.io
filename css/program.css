@@ -14,7 +14,6 @@
     align-items: center;
     gap: 40px;
     padding: 40px;
-    transform: translate3d(-65px, 0px, 0px);
 }
 .program-head p {
     width: 44%;
