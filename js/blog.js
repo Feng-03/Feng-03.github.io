@@ -67,6 +67,7 @@ function showPopup() {
 
   popupDate.textContent = `Date: ${selectedYear}-${selectedMonth}-${selectedDay}`;
   popupContent.textContent = content;
+  document.getElementById("thank-you").innerHTML = "<h3>Thanks for your time reading — Feng<h3>";
   document.getElementById("popup").style.display = "block";
   document.getElementById("overlay").style.display = "block";
 }

@@ -91,7 +91,17 @@ table {
     padding: 20px;
     border: 1px solid #ccc;
     box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-    width: 300px;
+    border-radius: 3%;
+  }
+  
+  pre {
+    font-size: 14px;
+  }
+
+  #popup-date, #thank-you, pre {
+    color: black;
+    height: auto;
+    white-space: break-spaces;
   }
 
   .close-btn {
