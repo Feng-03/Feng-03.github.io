@@ -59,6 +59,7 @@ function newPopup() {
   popupContent.textContent = lastValue;
   document.getElementById("popup").style.display = "block";
   document.getElementById("overlay").style.display = "block";
+  document.getElementById("thank-you").innerHTML = "<h3>Thanks for your time reading — Feng<h3>";
 }
 
 function showPopup() {
@@ -75,14 +76,19 @@ function showPopup() {
 function closePopup() {
   document.getElementById("popup").style.display = "none";
   document.getElementById("overlay").style.display = "none";
+}
 
-  // Reset for another pick
+function goBack(){
   selectedYear = null;
   selectedMonth = null;
   selectedDay = null;
 
-  // Reset button views
-  yearButtons.classList.add("active");
-  monthButtons.classList.remove("active");
-  dayButtons.classList.remove("active");
+  if (monthButtons.classList.contains("active")){
+    monthButtons.classList.remove("active");
+    yearButtons.classList.add("active");
+  }
+  if (dayButtons.classList.contains("active")){
+    dayButtons.classList.remove("active");
+    monthButtons.classList.add("active");
+  }
 }

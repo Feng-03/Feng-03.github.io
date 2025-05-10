@@ -70,7 +70,7 @@ table {
 
   #popup, #overlay {
     display: none;
-    position: fixed;
+    position: absolute;
     z-index: 1000;
   }
 
@@ -78,17 +78,19 @@ table {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background: rgba(0,0,0,0.5);
     z-index: 999;
+    flex-direction: column;
   }
 
   #popup {
-    top: 30%;
+    top: 40%;
     left: 50%;
+    width: 80%;
     transform: translate(-50%, -30%);
     background: white;
-    padding: 20px;
+    padding: 3%;
     border: 1px solid #ccc;
     box-shadow: 0 4px 8px rgba(0,0,0,0.3);
     border-radius: 3%;
@@ -109,6 +111,10 @@ table {
     color: red;
     font-weight: bold;
     cursor: pointer;
+  }
+
+  #clickBack {
+    background-image: linear-gradient(red);
   }
 
   .selected {
