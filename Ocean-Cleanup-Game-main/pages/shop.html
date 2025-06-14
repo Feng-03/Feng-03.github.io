@@ -4,24 +4,23 @@
     <title>Ocean Cleanup Game | Shop</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width initial-scale=1">
-    <link rel="stylesheet" href="../shop.css">
+    <link rel="stylesheet" href="../css/shop.css">
+    <link rel="stylesheet" href="../css/achievements.css">
     <link rel="icon" type="image/png" href="">
 </head>
 <body>
     <div id="shopPage">
-        <a href="../index.html" id="exit">X</a>
+        <a href="index.html" id="exit">X</a>
         <header class="shopHeader">
-            <img src="../img/optor.png" alt="Optor">
+            <img id="optor" src="../img/optor.png" alt="Optor">
             <h1>Optor's Junkyard</h1>
-            <div id="trashCounter">
-                Trash: <span id="coinBalance">0</span>
-            </div>
+            <p id="trashCounter">Trash: 0</p>
         </header>
 
         <div id="shopItems">
         </div>
     </div>
 
-    <script src="../shop.js"></script>
+    <script src="../dist/shop.bundle.js"></script>
 </body>
 </html>

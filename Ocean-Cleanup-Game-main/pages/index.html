@@ -5,27 +5,27 @@
     <title>Ocean Cleanup Game</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width initial-scale=1">
-    <link rel="stylesheet" href="menu.css">
-    <link rel="icon" type="game-icon" href="favicon.ico">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/achievements.css">
+    <link rel="icon" type="game-icon" href="../favicon.ico">
 </head>
 <body>
     <h1 id="trashCounter" class="button">Trash: 0</h1>
     <button id="resetBtn" class="button">Reset</button>
-    <a href="pages/shop.html" id="shop-button" class="button">Shop</a>
+    <a href="shop.html" id="shop-button" class="button">Shop</a>
     <div id = "playScreen">
         <h1 id="title">Ocean Cleanup Game</h1>
         <button type = "button" id = "playButton">Play</button>
-        <a href="pages/credits.html" id="creditButton">Credits</a>
+        <a href="credits.html" id="creditButton">Credits</a>
+        <a href="achievements.html" id="achievementButton">Achievements</a>
     </div>
     <div class="container">
         <div id="timer-display">
             0 : 0 : 0
         </div>
         <div class="buttons">
-            <!-- <button id="start-timer">Start</button>
-            <button id="pause-timer">Pause</button> -->
         </div>
     </div>
-    <script src="game.js"></script>
+    <script src="../dist/index.bundle.js"></script>
 </body>
 </html>
