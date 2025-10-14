@@ -1,5 +1,5 @@
 body {
-    background-image: url("../img/pixil-frame-0.png");
+    background-image: url("img/pixil-frame-0.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -19,14 +19,17 @@ body {
 
 #title {
     font-size: 72px;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 40px;
     text-shadow: 0 0 10px rgba(0, 123, 255, 0.7), 0 0 20px rgba(0, 123, 255, 0.5);
     letter-spacing: 2px;
-    color: white;
 }
 
 button, a {
     background-color: #2c2c2c;
-    color: #fff;
+    color: #ffffff;
     font-size: 22px;
     padding: 14px 32px;
     margin: 10px;
@@ -47,9 +50,9 @@ button:hover, a:hover {
 .button {
     padding: 10px 15px;
     font-size: 1.2rem;
-    background-color: #2c2c2c;
+    background-color: #393e46;
     border-radius: 8px;
-    color: #fff;
+    color: #ffffff;
 }
 
 #shop-button {
@@ -77,4 +80,16 @@ button:hover, a:hover {
     right: 150px;
     padding: 10px 15px;
     margin: 10px;
+}
+#start-timer, #pause-timer {
+    position: fixed;
+    font-size: 15px;
+    top: 10px;
+    left: 400px;
+    padding: 10px 15px;
+    margin: 10px;
+}
+
+#pause-timer {
+    left: 450px;
 }

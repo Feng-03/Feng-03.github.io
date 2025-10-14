@@ -1,5 +1,5 @@
 body {
-    background-image: url("../img/light-wood-background.jpg");
+    background-image: url(img/light-wood-background.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -63,7 +63,7 @@ body {
     flex-grow: 1;
 }
 
-#trashCounter {
+.trashCounter {
     font-size: 1.2rem;
     background-color: #393e46;
     padding: 10px 15px;
@@ -100,9 +100,33 @@ body {
 
 .shopItem h2 {
     font-size: 1.2rem;
+    margin-bottom: 10px;
     color: #00adb5;
 }
 
+.shopItem p {
+    font-size: 0.95rem;
+    color: #ccc;
+    margin-bottom: 15px;
+}
+
 .price {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
     color: #ffd369;
+}
+
+.shopItem button {
+    background-color: #00adb5;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.shopItem button:hover {
+    background-color: #019aa4;
 }

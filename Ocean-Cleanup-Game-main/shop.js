@@ -1,36 +1,17 @@
-import { achievementDescriptions, createAchievementElem, doAchievement } from "../achievements";
-import { createElem, playAudio } from "../randomShit";
+document.getElementById("trashCounter").textContent = `Trash: ${localStorage.getItem("money") ?? 0}`;
 
-
-const trashCounter = document.getElementById("trashCounter");
-if (trashCounter === null) {
-    throw new Error("where my trash counter bro");
-}
-trashCounter.textContent = `Trash: ${localStorage.getItem("money") ?? 0}`;
-
-let optorCounter = 0;
-document.getElementById("optor")?.addEventListener("click", () => {
-    localStorage.setItem("money", String(Number(localStorage.getItem("money") ?? 0) - 5));
-    playAudio("../noise/oof.mp3");
-    trashCounter.textContent = `Trash: ${localStorage.getItem("money") ?? 0}`;
-    optorCounter++;
-    if (optorCounter >= 50) {
-        doAchievement("Optor");
+// copy pasted cuz no bundler :(
+function createElem(type, properties = {}, styles = {}, ...children) {
+    const elem = document.createElement(type);
+    Object.assign(elem, properties);
+    Object.assign(elem.style, styles);
+    for (const child of children) {
+        elem.appendChild(child);
     }
-});
-
-interface shopItem {
-    name: string
-    imgSrc?: string
-    title: string
-    description: string
-    baseCost: number,
-    costMultiplier: number,
-    currentLevel?: number,
-    lvlAchievements?: {level: number, achievementName: string}[]
+    return elem;
 }
 
-const items: shopItem[] = [
+const items = [
     {
         name: "harpoon",
         imgSrc: "../img/harpoonIcon.png",
@@ -53,8 +34,7 @@ const items: shopItem[] = [
         title: "Speed Upgrade",
         description: "Speed up your cleanup!",
         baseCost: 15,
-        costMultiplier: 1.5,
-        lvlAchievements: [{level: 10, achievementName: "Very speed"}]
+        costMultiplier: 1.5
     },
     {
         name: "coffee",
@@ -96,15 +76,9 @@ const items: shopItem[] = [
     }
 ];
 
-document.getElementById("shopPage")?.appendChild(createAchievementElem());
-
 const shopItems = document.getElementById("shopItems");
-if (shopItems === null) {
-    throw new Error("where the shop items bro");
-}
-
 for (const item of items) {
-    item.currentLevel = Number(localStorage.getItem(item.name) ?? 0);
+    item.currentLevel = localStorage.getItem(item.name) ?? 0;
     const priceElem = createElem("span", {class: "price", textContent: `Cost: ${Math.round(item.baseCost * item.costMultiplier ** item.currentLevel)}`});
     priceElem.classList.add("price")
     const shopItem = createElem("div", {id: item.name}, {},
@@ -114,9 +88,6 @@ for (const item of items) {
         priceElem,
     );
     shopItem.addEventListener("click", () => {
-        if (item.currentLevel === undefined) {
-            throw new Error("item.currentLevel is undefined. how did this happen bruh")
-        }
         const cost = Math.round(item.baseCost * item.costMultiplier ** item.currentLevel);
         let money = Number(localStorage.getItem("money") ?? 0);
         if (money < cost) {
@@ -124,32 +95,15 @@ for (const item of items) {
             return;
         }
         const level = Number(localStorage.getItem(item.name) ?? 0) + 1;
-        localStorage.setItem(item.name, String(level));
+        localStorage.setItem(item.name, level);
         item.currentLevel = level;
-
-        if (item.lvlAchievements !== undefined) {
-            for (const lvlAchievement of item.lvlAchievements) {
-                if (level > lvlAchievement.level) {
-                    doAchievement(lvlAchievement.achievementName);
-                }
-            }
-        }
-
         money -= cost;
-        // this is so dumb and they dont pay me enough i want to kill myself what am i doing
-        const oldMoneyWasted = Number(localStorage.getItem("moneyWasted") ?? 0)
-        localStorage.setItem("moneyWasted", String(oldMoneyWasted + cost));
-        if (oldMoneyWasted < 1000 && oldMoneyWasted + cost > 1000) {
-            doAchievement("Rockefeller");
-        }
-        localStorage.setItem("money", String(money));
-        trashCounter.textContent = `Trash: ${money}`;
-        const priceElem = document.querySelector(`#${item.name} .price`)
-        if (priceElem === null) {
-            throw new Error("where the price element bro")
-        }
-        priceElem.textContent = `Cost: ${Math.round(cost * item.costMultiplier)}`;
-        playAudio("../noise/kaching.mp3");
+        localStorage.setItem("money", money);
+        document.getElementById("trashCounter").textContent = `Trash: ${money}`;
+        document.querySelector(`#${item.name} .price`).textContent = `Cost: ${Math.round(cost * item.costMultiplier ** level)}`;
+        const kaching = createElem("audio", {src: "../noise/kaching.mp3"});
+        kaching.play();
+        kaching.remove();
     })
     shopItem.classList.add("shopItem");
     shopItems.appendChild(shopItem);
