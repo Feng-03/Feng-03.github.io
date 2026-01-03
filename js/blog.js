@@ -2,50 +2,20 @@ let selectedYear = null;
 let selectedMonth = null;
 let selectedDay = null;
 
-// const blogData = {
-//   "2025-1-1": "Test 1",
-//   "2025-2-1": "Test 2"
-// };
-
-const popupDate = document.getElementById("popup-date");
-const popupContent = document.getElementById("popup-content");
+let yearEntries = {};
 
 const yearButtons = document.getElementById("year-buttons");
 const monthButtons = document.getElementById("month-buttons");
 const dayButtons = document.getElementById("day-buttons");
 
+const popupDate = document.getElementById("popup-date");
+const popupContent = document.getElementById("popup-content");
+
+/* ------- New Post Button ------ */
+
 document.getElementById("new-post").addEventListener("click", () => {
   newPopup();
 });
-
-// Handle years selection
-document.querySelectorAll('[data-year]').forEach(button => {
-  button.addEventListener('click', () => {
-    selectedYear = button.getAttribute("data-year");
-    toggleButtons(yearButtons, monthButtons);
-  });
-});
-
-// Handle months selection
-document.querySelectorAll('[data-month]').forEach(button => {
-  button.addEventListener('click', () => {
-    selectedMonth = button.getAttribute("data-month");
-    toggleButtons(monthButtons, dayButtons);
-  });
-});
-
-// Handle days selection
-document.querySelectorAll('[data-day]').forEach(button => {
-  button.addEventListener('click', () => {
-    selectedDay = button.getAttribute("data-day");
-    showPopup();
-  });
-});
-
-function toggleButtons(currentGroup, nextGroup) {
-  currentGroup.classList.remove("active");
-  nextGroup.classList.add("active");
-}
 
 function newPopup() {
   const values = Object.values(blogData);
@@ -62,13 +32,71 @@ function newPopup() {
   document.getElementById("thank-you").innerHTML = "<h3>Thanks for your time reading — Feng<h3>";
 }
 
-function showPopup() {
-  const key = `${selectedYear}-${parseInt(selectedMonth)}-${parseInt(selectedDay)}`;
-  const content = blogData[key] || "No entry for this date.";
+/* ---------- YEAR ---------- */
 
-  popupDate.textContent = `Date: ${selectedYear}-${selectedMonth}-${selectedDay}`;
-  popupContent.textContent = content;
-  document.getElementById("thank-you").innerHTML = "<h3>Thanks for your time reading — Feng<h3>";
+document.querySelectorAll("[data-year]").forEach(btn => {
+  btn.addEventListener("click", () => {
+    selectedYear = btn.dataset.year;
+
+    yearEntries = Object.fromEntries(
+      Object.entries(blogData).filter(([key]) =>
+        key.startsWith(`${selectedYear}-`)
+      )
+    );
+
+    yearButtons.classList.remove("active");
+    monthButtons.classList.add("active");
+  });
+});
+
+/* ---------- MONTH ---------- */
+
+document.querySelectorAll("[data-month]").forEach(btn => {
+  btn.addEventListener("click", () => {
+    selectedMonth = btn.dataset.month;
+
+    updateDayButtons();
+
+    monthButtons.classList.remove("active");
+    dayButtons.classList.add("active");
+  });
+});
+
+/* ---------- DAY ---------- */
+
+document.querySelectorAll("[data-day]").forEach(btn => {
+  btn.addEventListener("click", () => {
+    if (btn.disabled) return;
+
+    selectedDay = btn.dataset.day;
+    showPopup();
+  });
+});
+
+/* ---------- ENABLE / DISABLE DAYS ---------- */
+
+function updateDayButtons() {
+  const validDays = new Set();
+
+  Object.keys(yearEntries).forEach(date => {
+    const [, month, day] = date.split("-");
+    if (month === selectedMonth) validDays.add(day);
+  });
+
+  document.querySelectorAll("[data-day]").forEach(btn => {
+    btn.disabled = !validDays.has(btn.dataset.day);
+    btn.style.opacity = btn.disabled ? "0.3" : "1";
+  });
+}
+
+/* ---------- POPUP ---------- */
+
+function showPopup() {
+  const key = `${selectedYear}-${selectedMonth}-${selectedDay}`;
+
+  popupDate.textContent = key;
+  popupContent.textContent = blogData[key] || "No entry for this date.";
+
   document.getElementById("popup").style.display = "block";
   document.getElementById("overlay").style.display = "block";
 }
@@ -78,17 +106,17 @@ function closePopup() {
   document.getElementById("overlay").style.display = "none";
 }
 
-function goBack(){
-  selectedYear = null;
-  selectedMonth = null;
-  selectedDay = null;
+/* ---------- GO BACK ---------- */
 
-  if (monthButtons.classList.contains("active")){
-    monthButtons.classList.remove("active");
-    yearButtons.classList.add("active");
-  }
-  if (dayButtons.classList.contains("active")){
+function goBack() {
+  if (dayButtons.classList.contains("active")) {
     dayButtons.classList.remove("active");
     monthButtons.classList.add("active");
+    return;
+  }
+
+  if (monthButtons.classList.contains("active")) {
+    monthButtons.classList.remove("active");
+    yearButtons.classList.add("active");
   }
 }
